@@ -1,11 +1,11 @@
-import "../App.css";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navigation from "./Navigation";
+import Navigation from "../components/Navigation";
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "./LoginPage";
-import HomePage from "./HomePage";
-import LeaderboardPage from "./LeaderboardPage";
-import NewPollPage from "./NewPollPage";
+import LoginPage from "../components/LoginPage";
+import HomePage from "../components/HomePage";
+import LeaderboardPage from "../components/LeaderboardPage";
+import NewPollPage from "../components/NewPollPage";
 
 const App = () => {
   return (
