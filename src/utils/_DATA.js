@@ -1,4 +1,12 @@
 let users = {
+  admin: {
+    id: "admin",
+    password: "admin",
+    name: "Admin",
+    avatarURL: null,
+    answers: null,
+    questions: null,
+  },
   sarahedo: {
     id: "sarahedo",
     password: "password123",

@@ -13,10 +13,6 @@ import LoadingBar from "react-redux-loading-bar";
 
 const App = (props) => {
   useEffect(() => {
-    if (props.authedUser === null) {
-      return;
-    }
-
     props.dispatch(handleInitialData());
   }, [props, props.authedUser]);
 
@@ -32,14 +28,15 @@ const App = (props) => {
         <Route path="/" exact element={<HomePage />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/new" element={<NewPollPage />} />
-        <Route path="/logout" element={<LoginPage />} />
       </Routes>
     </div>
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  authedUser,
-});
+const mapStateToProps = (state) => {
+  return {
+    authedUser: state.authedUser,
+  };
+};
 
 export default connect(mapStateToProps)(App);
