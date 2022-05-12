@@ -16,7 +16,6 @@ const QuestionCard = (props) => {
 
 const mapStateToProps = ({ questions }, { id }) => {
   const question = questions.byId[id];
-  console.log(question, id);
   return {
     question,
   };
