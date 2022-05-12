@@ -10,6 +10,7 @@ import HomePage from "../components/HomePage";
 import LeaderboardPage from "../components/LeaderboardPage";
 import NewPollPage from "../components/NewPollPage";
 import LoadingBar from "react-redux-loading-bar";
+import QuestionPage from "../components/QuestionPage";
 
 const App = (props) => {
   useEffect(() => {
@@ -26,6 +27,7 @@ const App = (props) => {
       <LoadingBar />
       <Routes>
         <Route path="/" exact element={<HomePage />} />
+        <Route path="/questions/:id" element={<QuestionPage />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/new" element={<NewPollPage />} />
       </Routes>

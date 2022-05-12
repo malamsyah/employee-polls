@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import QuestionsCard from "./QuestionsCard";
 
 const HomePage = (props) => {
-  console.log("props", props);
   return (
     <Container>
       {props.newQuestions.length > 0 && (

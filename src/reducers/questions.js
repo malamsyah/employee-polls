@@ -1,4 +1,8 @@
-import { RECEIVE_QUESTIONS, GROUP_QUESTIONS } from "../actions/questions";
+import {
+  RECEIVE_QUESTIONS,
+  GROUP_QUESTIONS,
+  VOTE_QUESTION,
+} from "../actions/questions";
 
 export default function questions(
   state = { byId: {}, allIds: [], answered: [], nonAnswered: [] },
@@ -50,6 +54,24 @@ export default function questions(
       return {
         ...state,
         ...groupedQuestions,
+      };
+    case VOTE_QUESTION:
+      console.log("action", action);
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.questionId]: {
+            ...state.byId[action.questionId],
+            [action.answer]: {
+              ...state.byId[action.questionId][action.answer],
+              votes: [
+                ...state.byId[action.questionId][action.answer].votes,
+                action.username,
+              ],
+            },
+          },
+        },
       };
     default:
       return state;
