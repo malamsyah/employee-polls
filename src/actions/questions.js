@@ -1,5 +1,5 @@
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { getInitialData } from "../utils/index";
+import { saveQuestionAnswer } from "../utils/index";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const GROUP_QUESTIONS = "GROUP_QUESTIONS";
@@ -34,7 +34,11 @@ export function answerQuestion(username, questionId, answer) {
 export function handleSaveAnswer(username, questionId, answer) {
   return (dispatch, getState) => {
     dispatch(showLoading());
-    return getInitialData().then(() => {
+    return saveQuestionAnswer({
+      authedUser: username,
+      qid: questionId,
+      answer: answer,
+    }).then(() => {
       dispatch(answerQuestion(username, questionId, answer));
       dispatch(groupQuestions(username));
       dispatch(hideLoading());
