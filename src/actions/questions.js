@@ -31,16 +31,12 @@ export function answerQuestion(username, questionId, answer) {
   };
 }
 
-export function handleSaveAnswer(username, questionId, answer) {
+export function handleSaveAnswer(authedUser, qid, answer) {
   return (dispatch, getState) => {
     dispatch(showLoading());
-    return saveQuestionAnswer({
-      authedUser: username,
-      qid: questionId,
-      answer: answer,
-    }).then(() => {
-      dispatch(answerQuestion(username, questionId, answer));
-      dispatch(groupQuestions(username));
+    return saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
+      dispatch(answerQuestion(authedUser, qid, answer));
+      dispatch(groupQuestions(authedUser));
       dispatch(hideLoading());
     });
   };
